@@ -1,6 +1,6 @@
 $version = 'v0.1'
 $name = 'availableport'
-$url = "https://github.com/wordijp/LanguageClient-php-tcp-neovim/releases/download/$version/"
+$url = "https://github.com/wordijp/LanguageServer-php-tcp-neovim/releases/download/$version/"
 
 $target = $name + '.exe'
 $zip_name = "${name}_windows_"

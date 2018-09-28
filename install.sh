@@ -27,13 +27,13 @@ release() {
 
 	# successed
 
-	cp -f download/${1%%.*}/$name bin/$name
+	cp -f download/$name bin/$name
 	chmod a+x bin/$name
 }
 
 download() {
     echo "Downloading bin/${name}..."
-	url=https://github.com/mattn/mkup/releases/download/$version/$1
+	url=https://github.com/wordijp/LanguageServer-php-tcp-neovim/releases/download/$version/$1
 	mkdir -p download
 	if (try_curl "$url" "$1" || try_wget "$url" "$1"); then
 		release $1
