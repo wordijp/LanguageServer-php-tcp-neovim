@@ -18,7 +18,7 @@ Using [`vim-plug`](https://github.com/junegunn/vim-plug):
 ```vim
 Plug 'wordijp/LanguageServer-php-tcp-neovim', {
     \ 'do': './install.sh && composer install && composer run-script parse-stubs',
-	\ }
+    \ }
 ```
 
 ## License
