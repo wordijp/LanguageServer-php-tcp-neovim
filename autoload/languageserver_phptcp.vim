@@ -7,7 +7,7 @@ function! languageserver_phptcp#start() abort
   let l:pls = split(l:pls,"\n")[0]
   let l:cmd_pls_sv = 'php '.l:pls.' --tcp-server='.l:url
   if has('win32')
-    silent execute '!start /min ' . l:cmd_pls_sv
+    silent execute '!start /b ' . l:cmd_pls_sv
   else
     silent execute '!' . l:cmd_pls_sv . ' &'
   endif
