@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # Try install by
 #   - download binary
-#   - build with cargo
+#   - build with go
 
 set -o nounset    # error when referencing undefined variable
 set -o errexit    # exit when command fails
@@ -20,27 +20,27 @@ try_wget() {
 }
 
 release() {
-	ok=0
-	[ $ok = 0 ] && [ "${1##*.}" = "gz"  ] && tar -zxvf download/$1 -C download && ok=1
-	[ $ok = 0 ] && [ "${1##*.}" = "zip" ] && unzip -o download/$1 -d download && ok=1
-	[ $ok = 0 ] && echo "decompress failed" && return 1
+    ok=0
+    [ $ok = 0 ] && [ "${1##*.}" = "gz"  ] && tar -zxvf download/$1 -C download && ok=1
+    [ $ok = 0 ] && [ "${1##*.}" = "zip" ] && unzip -o download/$1 -d download && ok=1
+    [ $ok = 0 ] && echo "decompress failed" && return 1
 
-	# successed
+    # successed
 
-	cp -f download/$name bin/$name
-	chmod a+x bin/$name
+    cp -f download/$name bin/$name
+    chmod a+x bin/$name
 }
 
 download() {
     echo "Downloading bin/${name}..."
-	url=https://github.com/wordijp/LanguageServer-php-tcp-neovim/releases/download/$version/$1
-	mkdir -p download
-	if (try_curl "$url" "$1" || try_wget "$url" "$1"); then
-		release $1
-		return
-	else
-		try_build || echo "Prebuilt binary might not be ready yet. Please check minutes later."
-	fi
+    url=https://github.com/wordijp/LanguageServer-php-tcp-neovim/releases/download/$version/$1
+    mkdir -p download
+    if (try_curl "$url" "$1" || try_wget "$url" "$1"); then
+        release $1
+        return
+    else
+        try_build || echo "Prebuilt binary might not be ready yet. Please check minutes later."
+    fi
 }
 
 try_build() {
